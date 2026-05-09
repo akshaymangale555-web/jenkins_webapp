@@ -1,26 +1,25 @@
 pipeline{
     agent any
     stages{
-        stage('Pre Build Actions'){
+        stage('pre build actions'){
             steps{
-                npm install
+                sh 'npm install'
                 sh 'sudo systemctl status nginx || sudo apt install nginx -y'
                 sh 'sudo systemctl start nginx'
+            
             }
         }
-        stage('Build'){
+        stage('build'){
             steps{
-               sh 'npm run build'
+                sh 'npm run build'
             }
         }
         stage('Post Build Actions'){
             steps{
-                echo "Build Completed Successfully for new CICD"
+                sh 'echo "build completed successfully"'
                 sh 'sudo cp -r dist/* /var/www/html/'
                 sh 'sudo systemctl restart nginx'
             }
         }
-
-            }
-        }
-    
+    }
+}
