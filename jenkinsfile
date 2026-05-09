@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Post Build Actions'){
             steps{
-                echo "Build Completed Successfully for new"
+                echo "Build Completed Successfully for new CICD"
                 sh 'sudo cp -r dist/* /var/www/html/'
                 sh 'sudo systemctl restart nginx'
             }
