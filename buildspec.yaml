@@ -15,9 +15,17 @@ phases:
   post_build:
     commands:
       - echo build completed on 'date'
+      - mkdir deploy
+      - cp -r dist deploy/dist
+      - mv appspec.yaml appspec.yaml
+      - cp appspec.yml deploy/
+      - cp -r script deploy/
+      - chmod +x deploy/scripts/restartNginx.sh
+      - chmod +x deploy/scripts/appStop.sh
 
 artifacts:
   files:
     - '**/*'
-  base-directory: 'dist'
+  base-directory: deploy
+  name: frontend-build
 
