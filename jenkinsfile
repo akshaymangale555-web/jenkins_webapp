@@ -1,13 +1,16 @@
 pipeline{
-    agent {label 'frontend'}
+    agent any 
     environment{
-        APP_SERVER = "172.31.36.95"
-        DEPLOY_DIR = "/var/www/html"
+        IMAGE_NAME = "mangale1234/"
+        iMAGE_TAG = "${BUILD_NUMBER}"
+        APP_SERVER = "65.0.108.98"
     }
     stages{
-        stage('pre build actions'){
-            steps{
-                sh 'npm install'  
+        stage('Checkout'){
+            {
+                sh '''
+                docker build -f docker/dockerfile -t $IMAGE_NAME:$IMAGE_TAG
+
             }
         }
         stage('build'){
