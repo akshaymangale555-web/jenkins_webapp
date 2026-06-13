@@ -4,7 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = "mangale1234/frontend"
         IMAGE_TAG  = "${BUILD_NUMBER}"
-        APP_SERVER = "13.49.228.23"
+        APP_SERVER = "65.0.108.98"
     }
 
     stages {
